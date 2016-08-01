@@ -5,4 +5,9 @@
         <attr name="subtitle" format="string" />
         <attr name="backgroundDrawable" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="FabBehavior">
+        <attr name="fabOption" format="string"/>
+    </declare-styleable>
+
 </resources>

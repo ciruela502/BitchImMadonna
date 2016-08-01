@@ -4,16 +4,16 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.support.annotation.DrawableRes;
 import android.support.v7.graphics.Palette;
-import android.view.View;
+
 import com.droidsonroids.materialmusicfacts.App;
 import com.droidsonroids.materialmusicfacts.common.Constants;
 import com.droidsonroids.materialmusicfacts.data.model.Album;
 import com.droidsonroids.materialmusicfacts.data.model.Madonna;
 import com.droidsonroids.materialmusicfacts.data.model.Song;
 import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -84,7 +84,19 @@ public class MadonnaProvider {
     public String provideAlbumNameByPosition(final int position) {
         return mMadonna.getAlbums().get(position).getTitle();
     }
+    public String provideMadonnaName(){
+        return mMadonna.getName();
+    }
+    public String provideMadonnaSurname(){
+        return mMadonna.getSurname();
+    }
+    public String provideMadonnaNick(){
+        return mMadonna.getNickname();
+    }
 
+    public String provideMadonnaPlaceBirth() {
+        return mMadonna.getPlaceOfBirth();
+    }
     public List<Song> provideSongsListByAlbum(final String albumTitle) {
         for(Album album : mMadonna.getAlbums()) {
             if(album.getTitle().equals(albumTitle)) {
@@ -105,4 +117,5 @@ public class MadonnaProvider {
         int blue = Color.blue(color);
         return Color.argb(alpha, red, green, blue);
     }
+
 }

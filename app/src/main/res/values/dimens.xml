@@ -22,5 +22,7 @@
     <dimen name="textsize_cardview_title">14sp</dimen>
     <dimen name="textsize_cardview_subtitle">12sp</dimen>
     <dimen name="textsize_cardview_text">14sp</dimen>
+    <dimen name="main_activity_ctl_margin_start">48dp</dimen>
+    <dimen name="album_details_overlap_top">40dp</dimen>
 
 </resources>

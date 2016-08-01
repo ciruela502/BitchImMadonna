@@ -42,4 +42,13 @@
         <item name="android:textColor">@color/primary_text</item>
     </style>
 
+    <style name="DefaultTextView" parent="RobotoLightText">
+        <item name="android:textSize">@dimen/textsize_cardview_text</item>
+        <item name="android:textColor"> @color/primary_text</item>
+    </style>
+
+    <style name="TextDescriptionOnToolbar" parent="RobotoRegularText">
+        <item name="android:textColor">@color/collapsed_title_color</item>
+        <item name="android:textSize">@dimen/textsize_collapsed_title</item>
+    </style>
 </resources>

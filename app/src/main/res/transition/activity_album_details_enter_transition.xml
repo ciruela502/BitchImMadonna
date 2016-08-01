@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
+    android:transitionOrdering="together">
+    <changeBounds
+        android:duration="300">
+        <targets>
+            <target android:targetId="@id/imageview_album"/>
+        </targets>
+    </changeBounds>
+    <changeImageTransform
+        android:duration="300">
+        <targets>
+            <target android:targetId="@id/imageview_album"/>
+        </targets>
+    </changeImageTransform>
+    <slide
+        android:slideEdge="bottom"
+        android:startDelay="300"
+        >
+        <targets>
+            <target android:targetId="@id/cardview" />
+        </targets>
+    </slide>
+</transitionSet>
