@@ -33,7 +33,6 @@ public class ShowHideFabBehavior extends CoordinatorLayout.Behavior<FloatingActi
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.FabBehavior);
         option = ta.getString(R.styleable.FabBehavior_fabOption);
-
     }
 
     @Override
@@ -44,42 +43,61 @@ public class ShowHideFabBehavior extends CoordinatorLayout.Behavior<FloatingActi
 
     @Override
     public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionButton child, View directTargetChild, View target, int nestedScrollAxes) {
+        if (option.contains("right")) {
+            isShown = child.isShown();
+            if (isShown) {
+                Log.e(TAG, "onNestedScroll called wyjdz");
+                Animation showAnimation = new TranslateAnimation(0, 300, 0, 0);
+                showAnimation.setDuration(500);
+                child.startAnimation(showAnimation);
+                isShown = true;
+            }
+        }
+        else if(option.contains("bottom")){
+            isShown = child.isShown();
+            if (isShown) {
+                Log.e(TAG, "onNestedScroll called wyjdz");
+                Animation showAnimation = new TranslateAnimation(0, 0, 0, 300);
+                showAnimation.setDuration(500);
+                child.startAnimation(showAnimation);
+                isShown = true;
+            }
+
+        }
         return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL;
     }
 
     @Override
     public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionButton child, View target) {
         super.onStopNestedScroll(coordinatorLayout, child, target);
-        Log.e(TAG, "onNestedScroll called wejdz");
-        isShown = child.isShown();
-        if(!isShown) {
-            Animation showAnimation = new TranslateAnimation(300, 0, 0, 0);
-            showAnimation.setDuration(500);
-            child.startAnimation(showAnimation);
-        }
-     //   child.show();
 
+        if (option.contains("right")) {
+
+            isShown = child.isShown();
+            Log.e(TAG, "onNestedScroll called wejdz"+isShown);
+            if (isShown) {
+                Animation showAnimation = new TranslateAnimation(300, 0, 0, 0);
+                showAnimation.setDuration(500);
+                child.startAnimation(showAnimation);
+                isShown = false;
+            }
+        }
+        else if(option.contains("bottom")){
+            Log.e(TAG, "onNestedScroll called wejdz");
+            isShown = child.isShown();
+            if (isShown) {
+                Animation showAnimation = new TranslateAnimation(0, 0, 300, 0);
+                showAnimation.setDuration(500);
+                child.startAnimation(showAnimation);
+                isShown = false;
+            }
+        }
+//     child.show();
     }
 
     @Override
     public void onNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionButton child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
-
-      isShown = child.isShown();
-        if (isShown) {
-            Log.e(TAG, "onNestedScroll called wyjdz");
-            Animation showAnimation = new TranslateAnimation(0, 300, 0, 0);
-            showAnimation.setDuration(500);
-            child.startAnimation(showAnimation);
-            isShown=false;
-        }
-       else if(!isShown) {
-
-             isShown = true;
-        }
-        //child.hide();
-
     }
 
-    // .showAnimation
 }
